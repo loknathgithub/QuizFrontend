@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="/js/validation.js" defer></script>
+</head>
+<body class="bg-gray-100 flex flex-col pt-10 items-center min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="mb-10">
+        <h1 class="text-4xl font-bold text-center"><a href="/html/index.html">Ease Quiz</a></h1>
+    </nav>
+    <!-- Validation Content Box -->
+    <div class="bg-white shadow-md rounded-lg p-8 w-96">
+        <div id="errorMessage" class="text-red-500 mb-4"></div>
+        <input type="password" id="passwordInput" placeholder="Password" class="border border-gray-300 rounded-lg p-2 w-full mb-4" />
+        <button id="editButton" class="bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600">Edit</button>
+    </div>
+
+
+</body>
+</html>

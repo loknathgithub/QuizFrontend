@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/js/preview.js" defer></script>
+</head>
+<body class="bg-gray-100 flex flex-col pt-10 items-center min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="mb-10">
+        <div class="flex items-center">
+            <h1 id="title" class="text-4xl font-bold"><a href="/html/index.html">Ease Quiz</a></h1>
+        </div>
+    </nav>
+
+    <div>
+        <button 
+                class="ml-6 mb-6 bg-green-500 text-white rounded-lg px-4 py-2 hover:bg-green-600"
+                onclick="goToAddQuestion()">
+                + Add Question
+            </button>
+            <button 
+            class="ml-6 mb-6 bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600"
+            onclick="deleteQuiz()"
+            title="Delete Quiz">
+            Delete Quiz
+            </button>
+    </div>
+    <div id="previewContainer" class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-6">
+        
+        <!-- Questions will be loaded here -->
+    </div>
+
+    <div class="mb-6"></div>
+    <button 
+                class="ml-6 mb-6 m bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600"
+                onclick="redirectToScoreboard()">
+                Scoreboard
+            </button>
+
+            <div class="mb-12"></div>
+</body>
+</html>
