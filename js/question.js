@@ -77,23 +77,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             category: category
         };
 
-        // let url = 'http://localhost:8080/question/add';  // Default URL for adding
-        // let method = 'POST';
-
-        // if (action === 'update' && questionId) {
-        //     url = `http://localhost:8080/question/update/${questionId}`;
-        //     method = 'PATCH';
-        // }
-
-        // try {
-        //     const response = await fetch(url, {
-        //         method: method,
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(questionData)
-        //     });
-
         // Get quiz name from localStorage
         try{
             const quizName = localStorage.getItem('className');
@@ -106,11 +89,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             let url, method;
             if (action === 'update' && questionId) {
                 // For updates - quiz association remains unchanged
-                url = `http://localhost:8080/question/update/${questionId}`;
+                const baseurl = window.env.QUESTION_API_URL;
+                url = `${baseurl}/question/update/${questionId}`;
                 method = 'PATCH';
             } else {
+                const baseurl = window.env.QUESTION_API_URL;
                 // For new questions - include quiz name in URL
-                url = `http://localhost:8080/question/add?quizsName=${quizName}`;
+                url = `${baseurl}/question/add?quizsName=${quizName}`;
                 method = 'POST';
             }
 
