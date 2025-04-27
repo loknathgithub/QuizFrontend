@@ -3,7 +3,8 @@ document.getElementById('startButton').onclick = async function() {
     if (quizName) {
         try {
             alert(`Starting quiz for class: ${quizName}`);
-            const response = await fetch(`http://localhost:8090/quiz/by-class/${quizName}`);
+            const url = window.env.QUIZ_API_URL;
+            const response = await fetch(`${url}/quiz/by-class/${quizName}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -40,28 +41,3 @@ document.getElementById('editButton').onclick = async function() {
     }
 };
 
-// Function to handle the Edit button click
-// document.getElementById('editButton').onclick = function() {
-//     const className = document.getElementById('className').value; // Get the value from the input box
-//     if (className) {
-//         // Redirect to edit page or call an API
-//         alert(`Editing quiz for class: ${className}`);
-//         // Example API call (you can replace this with your actual API)
-//         fetch(`http://localhost:8080/question/edit?className=${encodeURIComponent(className)}`)
-//             .then(response => {
-//                 if (!response.ok) {
-//                     throw new Error('Network response was not ok');
-//                 }
-//                 return response.json();
-//             })
-//             .then(data => {
-//                 console.log(data); // Handle the data returned from the API
-//                 // You can redirect to another page or update the UI based on the response
-//             })
-//             .catch(error => {
-//                 console.error('There was a problem with the fetch operation:', error);
-//             });
-//     } else {
-//         alert('Please enter a class name.');
-//     }
-// };

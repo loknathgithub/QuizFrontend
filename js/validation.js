@@ -16,7 +16,8 @@ document.getElementById("editButton").onclick = async function() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/class/verify?quizName=${quizName}&password=${password}`, {
+        const baseurl = window.env.QUESTION_API_URL;
+        const response = await fetch(`${baseurl}/class/verify?quizName=${quizName}&password=${password}`, {
             method: 'POST'
         });
 
@@ -26,7 +27,9 @@ document.getElementById("editButton").onclick = async function() {
         } else if (response.status === 404) {
             // If 404, backend will create the class (if modified as per previous recommendation)
             // For current backend, handle client-side creation separately:
-            const createResponse = await fetch('http://localhost:8080/class/create', {
+            
+        const baseurl = window.env.QUESTION_API_URL;
+            const createResponse = await fetch(`${baseurl}/class/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ quizsName: quizName, password })

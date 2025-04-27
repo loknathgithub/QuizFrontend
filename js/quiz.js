@@ -68,9 +68,9 @@ async function submitQuiz() {
 
     // Only send responses in the body; username/className as query params
     const payload = responses;
-
+    const baseurl = window.env.QUIZ_API_URL;
     // Build the URL with query parameters
-    const url = new URL('http://localhost:8090/quiz/submit');
+    const url = new URL(`${baseurl}/quiz/submit`);
     url.searchParams.append('username', username);
     url.searchParams.append('classname', className);
 
@@ -110,7 +110,9 @@ async function submitQuiz() {
 async function fetchQuestions(){
     console.log("fetching")
     const className=localStorage.getItem('className')
-    const res=await fetch(`http://localhost:8090/quiz/by-class/${className}`) 
+    
+    const baseurl = window.env.QUIZ_API_URL;
+    const res=await fetch(`${baseurl}/quiz/by-class/${className}`) 
     if(res.ok){
         const data=await res.json();
         console.log(data)

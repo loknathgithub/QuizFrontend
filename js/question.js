@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Updated: Fetch question using /getquestions API if editing
     if (questionId) {
         try {
-            const response = await fetch('http://localhost:8080/question/getquestions', {
+            const baseurl = window.env.QUESTION_API_URL;
+            const response = await fetch(`${baseurl}/question/getquestions`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

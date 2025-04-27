@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/question/by-class/${className}`);
+        const baseurl = window.env.QUESTION_API_URL;
+        const response = await fetch(`${baseurl}/question/by-class/${className}`);
         if (!response.ok) throw new Error('Failed to load questions');
         
         const questions = await response.json();
@@ -29,7 +30,8 @@ async function loadQuestions() {
     }
 
     try {
-        const response = await fetch(`http://localhost:8080/question/by-class/${quizName}`);
+        const baseurl = window.env.QUESTION_API_URL;
+        const response = await fetch(`${baseurl}/question/by-class/${quizName}`);
         if (!response.ok) throw new Error('Failed to load questions');
 
         const questions = await response.json();
@@ -122,7 +124,8 @@ async function deleteQuestion(id) {
     if (!confirm('Are you sure you want to delete this question?')) return;
 
     try {
-        const response = await fetch(`http://localhost:8080/question/delete/${id}`, {
+        const baseurl = window.env.QUESTION_API_URL;
+        const response = await fetch(`${baseurl}/question/delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -153,7 +156,8 @@ async function deleteQuiz() {
     if (!confirm(`Are you sure you want to delete the quiz "${quizName}"?`)) return;
 
     try {
-        const response = await fetch(`http://localhost:8080/question/delete/by-class/${quizName}`, {
+        const baseurl = window.env.QUESTION_API_URL;
+        const response = await fetch(`${baseurl}/question/delete/by-class/${quizName}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

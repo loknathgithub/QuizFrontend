@@ -13,9 +13,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         `Scoreboard for ${className}`;
 
     try {
+        const baseurl = window.env.QUIZ_API_URL;
         // Fetch scores from your API with URL encoding
         const response = await fetch(
-            `http://localhost:8090/quiz/getScores/${className}`
+            `${baseurl}/quiz/getScores/${className}`
         );
         
         if (!response.ok) throw new Error('Failed to load scores');
